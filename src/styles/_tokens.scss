@@ -1,0 +1,82 @@
+// SCSS foundations; CSS properties allow components to respond to theme changes.
+$background: #080d19;
+$surface: #101827;
+$text: #edf2ff;
+$muted: #9caac2;
+$blue: #6b9cff;
+$violet: #a18aff;
+$cyan: #79d9ed;
+$success: #70d9ad;
+$container-width: 1320px;
+$section-spacing: clamp(64px, 8vw, 112px);
+$radius-sm: 10px;
+$radius-lg: 22px;
+$transition: 180ms ease;
+
+:root {
+  color-scheme: dark;
+  --background: #{$background};
+  --surface: #{$surface};
+  --surface-glass: rgba(16, 24, 39, .9);
+  --header-bg: rgba(8, 13, 25, .83);
+  --text: #{$text};
+  --text-muted: #{$muted};
+  --border: #222d43;
+  --border-strong: #3b4b69;
+  --blue: #{$blue};
+  --violet: #{$violet};
+  --cyan: #{$cyan};
+  --success: #{$success};
+  --success-soft: rgba(112, 217, 173, .08);
+  --success-border: rgba(112, 217, 173, .24);
+  --accent-soft: rgba(107, 156, 255, .09);
+  --grid: rgba(107, 156, 255, .1);
+  --monogram: #516586;
+  --gradient: linear-gradient(105deg, var(--blue) 5%, var(--violet) 85%);
+  --button-gradient: linear-gradient(110deg, #365df5, #7950e8);
+  --cta-glow: 0 4px 18px rgba(75, 88, 245, .24);
+  --icon-surface: linear-gradient(135deg, var(--accent-soft), rgba(161, 138, 255, .1));
+  --icon-violet-glow: rgba(161, 138, 255, .12);
+  --angular: #ed3459;
+  --node: #78ce68;
+  --javascript: #f7df1e;
+  --mongodb: #47a248;
+  --brand-ink: #172238;
+  --python-blue: #4aa7dc;
+  --python-yellow: #ffcf55;
+  --button-text: #fff;
+  --radius-sm: #{$radius-sm};
+  --radius-lg: #{$radius-lg};
+  --radius-pill: 999px;
+  --container-width: #{$container-width};
+  --section-spacing: #{$section-spacing};
+  --gutter: clamp(20px, 4vw, 56px);
+  --shadow: 0 12px 32px rgba(0, 0, 0, .16);
+  --glow: 0 0 60px rgba(107, 156, 255, .1), 0 24px 60px rgba(0, 0, 0, .22);
+  --transition: #{$transition};
+  --font-sans: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --background: #f6f8fe;
+  --surface: #fff;
+  --surface-glass: rgba(255, 255, 255, .94);
+  --header-bg: rgba(246, 248, 254, .88);
+  --text: #172238;
+  --text-muted: #53627b;
+  --border: #dbe1ed;
+  --border-strong: #b2bfd4;
+  --blue: #365dc0;
+  --violet: #7651c5;
+  --cyan: #18798b;
+  --success: #16724b;
+  --success-soft: rgba(22, 114, 75, .06);
+  --success-border: rgba(22, 114, 75, .2);
+  --accent-soft: rgba(54, 93, 192, .07);
+  --grid: rgba(54, 93, 192, .1);
+  --monogram: #a6b5d1;
+  --shadow: 0 12px 32px rgba(31, 47, 81, .08);
+  --glow: 0 0 60px rgba(54, 93, 192, .09), 0 24px 60px rgba(31, 47, 81, .1);
+}

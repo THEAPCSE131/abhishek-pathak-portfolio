@@ -1,0 +1,11 @@
+<section id="tech-stack" aria-labelledby="tech-stack-heading">
+  <h2 id="tech-stack-heading">Tech Stack</h2>
+  <ul class="technology-grid">
+    @for (technology of technologies; track technology.name) {
+      <li class="technology-card" [style.--technology-color]="technology.color">
+        <app-icon [name]="technology.icon" />
+        <span>{{ technology.name }}</span>
+      </li>
+    }
+  </ul>
+</section>

@@ -1,0 +1,12 @@
+<section id="about" class="about-stack" aria-labelledby="about-heading">
+  <div class="container about-stack-layout">
+    <div class="about-content">
+      <h2 id="about-heading">About Me</h2>
+      <p>I'm a Software Engineer with 4+ years of experience in Angular and the MEAN stack, focused on building scalable, maintainable web applications and practical AI-powered tools. I enjoy solving real-world problems, working on modern frontend experiences, and exploring AI/ML to create useful solutions. I'm continuously improving my skills and building projects that create real value.</p>
+      @if (moreAboutUrl) {
+        <a class="button about-link" [href]="moreAboutUrl">Know More About Me<app-icon name="arrow" /></a>
+      }
+    </div>
+    <app-tech-stack />
+  </div>
+</section>

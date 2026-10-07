@@ -1,0 +1,37 @@
+<section id="home" class="hero section" aria-labelledby="hero-heading">
+  <div class="container hero-layout">
+    <div class="hero-content">
+      <div class="availability"><span class="status-dot" aria-hidden="true"></span>Available for Opportunities</div>
+      <p class="eyebrow">ENGINEERING IDEAS INTO REALITY</p>
+      <h1 id="hero-heading"><span class="greeting">Hi, I'm</span><span class="name">Abhishek Pathak</span></h1>
+      <p class="subtitle">Software Engineer <span class="separator">|</span> <span>Angular • MEAN • AI</span></p>
+      <p class="description">I build scalable web applications and AI-powered tools, combining modern frontend engineering with practical, real-world problem solving.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#projects">View My Work<app-icon name="arrow" /></a>
+        <a class="button button-secondary" [href]="profile.contactUrl" aria-label="Email Abhishek Pathak" title="Email Abhishek Pathak"><app-icon name="email" />Contact Me</a>
+      </div>
+      <div class="social-links" aria-label="Social profiles">
+        @for (link of profile.socialLinks; track link.icon) {
+          <a class="icon-button" [href]="link.url" [attr.target]="link.icon === 'email' ? null : '_blank'" [attr.rel]="link.icon === 'email' ? null : 'noopener noreferrer'" [attr.aria-label]="link.icon === 'email' ? 'Email Abhishek Pathak' : link.label + ' profile (opens in a new tab)'" [title]="link.icon === 'email' ? 'Email Abhishek Pathak' : link.label + ' profile'"><app-icon [name]="link.icon" /></a>
+        }
+      </div>
+    </div>
+
+    <div class="profile-stage">
+      <div class="profile-grid" aria-hidden="true"></div>
+      <div class="portrait-frame">
+        <img class="portrait" [src]="profile.photoUrl" [alt]="profile.photoAlt" width="400" height="400" fetchpriority="high" />
+      </div>
+      @for (technology of technologies; track technology.icon; let index = $index) {
+        <div [class]="'technology-badge badge-' + index"><app-icon [name]="technology.icon" />{{ technology.label }}</div>
+      }
+      <div class="profile-callout"><app-icon name="code" /><span>Building Practical Solutions<span class="callout-detail">with Code &amp; AI</span></span></div>
+    </div>
+
+    <aside class="stats" aria-label="Professional highlights">
+      @for (stat of stats; track stat.icon) {
+        <div class="stat"><span class="stat-icon"><app-icon [name]="stat.icon" /></span><div class="stat-content"><strong>{{ stat.value }}</strong><span class="stat-label">{{ stat.label }}@if (stat.labelDetail) {<span class="stat-label-detail">{{ stat.labelDetail }}</span>}</span></div></div>
+      }
+    </aside>
+  </div>
+</section>
