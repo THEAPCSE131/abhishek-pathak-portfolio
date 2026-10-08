@@ -1,0 +1,38 @@
+<footer class="footer" aria-label="Portfolio footer">
+  <span class="corner-orb orb-left" aria-hidden="true"></span>
+  <span class="corner-orb orb-right" aria-hidden="true"></span>
+  <span class="corner-wave wave-left" aria-hidden="true"></span>
+  <span class="corner-wave wave-right" aria-hidden="true"></span>
+  <div class="container">
+    <div class="footer-columns">
+      <div class="branding">
+        <p class="brand-name">Abhishek Pathak</p>
+        <p class="subtitle">Software Engineer</p>
+        <p class="brand-description">Building thoughtful digital experiences with modern technologies.</p>
+      </div>
+      <nav class="quick-navigation" aria-labelledby="footer-navigation-heading">
+        <h2 id="footer-navigation-heading">Quick Navigation</h2>
+        <div class="navigation-grid">
+          @for (link of links; track link.id) {
+            <a [href]="'#' + link.id" (click)="navigateToSection($event, link.id)">{{ link.label }}</a>
+          }
+        </div>
+      </nav>
+      <nav class="connections" aria-labelledby="footer-connect-heading">
+        <h2 id="footer-connect-heading">Connect With Me</h2>
+        <div class="social-links">
+          @for (link of socialLinks; track link.label) {
+            <a class="social-link" [class.github]="link.icon === 'github'" [class.linkedin]="link.icon === 'linkedin'" [class.email]="link.icon === 'email'" [href]="link.url" [attr.target]="link.icon === 'email' ? null : '_blank'" rel="noopener noreferrer" [attr.aria-label]="link.label + (link.icon === 'email' ? '' : ' (opens in a new tab)')"><app-icon [name]="link.icon" /></a>
+          }
+          @if (whatsappUrl) {
+            <a class="social-link whatsapp" [href]="whatsappUrl" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (opens in a new tab)"><app-icon name="whatsapp" /></a>
+          }
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© {{ year }} Abhishek Pathak. All rights reserved.</p>
+      <p class="passion">Designed &amp; Built with Passion <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z" /></svg></p>
+    </div>
+  </div>
+</footer>

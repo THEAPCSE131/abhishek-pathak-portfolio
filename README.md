@@ -21,3 +21,83 @@ Install dependencies with `npm ci`, then run `npm start` to start the developmen
 The root component contains only a router outlet. Routes and section folders are intentionally empty until implementation begins. Empty folders are tracked with .gitkeep files.
 
 No builds or tests were run during setup.
+
+## Contact section setup
+
+The Contact section uses direct Email and WhatsApp links, with equally sized cards
+and a full-width Find Me Online section. No contact form, email service account,
+API credentials, or backend is required.
+
+- Send Email opens the default email application using
+  `mailto:apcse131@gmail.com?subject=Portfolio%20Inquiry`.
+- GitHub and LinkedIn reuse URLs from `src/app/models/portfolio.config.ts`
+  and open in new tabs. The social Email link uses the same mailto URL.
+- WhatsApp uses `contact.whatsappNumber` in `src/environments/environment.ts`,
+  currently configured to `917069314800`. Use digits only: country code 91
+  followed by a valid 10-digit Indian mobile number. Missing or invalid values
+  disable the action without creating a broken link or a visible warning.
+- The official wa.me link includes this encoded message:
+
+> Hi Abhishek, I visited your developer portfolio and would like to discuss a project or professional opportunity.
+
+Email and WhatsApp open a composer/chat; visitors choose to send the message.
+The obsolete email integration, service, form logic, and configuration were removed.
+No WhatsApp configuration is missing. Contact remains the last main section,
+followed by the standalone footer in `src/app/core/layout/footer`. The footer
+reuses configured navigation and contact links and displays the current year.
+Header and Footer navigation include Home, About, Services, Projects, and Contact.
+Tech Stack remains within About, with its existing section ID unchanged.
+
+## What I Can Build
+
+The standalone component in `src/app/features/portfolio/services` appears between
+About / Tech Stack and Featured Projects. Its six service cards use data-driven
+content, shared icons, decorative inline SVG illustrations, and a responsive
+three / two / one-column grid. Header and footer Services links use `#services`.
+Each card's arrow scrolls to `#contact`, respects reduced-motion preferences,
+and focuses the Contact heading. Existing fixed-header scroll offsets are reused.
+No dependencies, generated images, service routes, or modals were added.
+No builds or tests were run for this implementation.
+
+## Featured project showcase
+
+Featured Projects uses a navy two-column showcase with the existing local
+Resume Analyzer screenshot and configured Live Demo / GitHub URLs. Project data,
+including feature bullets, lives in `src/app/models/projects.config.ts`.
+One project is displayed at a time. Previous / next controls and accessible
+pagination appear only when the project array contains at least two entries.
+Adding projects requires unique IDs and their own content, feature lists,
+technologies, screenshot paths, and verified URLs; do not duplicate projects to
+fill slides. Screenshots render at their natural aspect ratio without cropping.
+The adjacent statistics strip is unchanged. No dependencies or images were added,
+and no builds or tests were run for this redesign.
+
+## Typography and functional icons
+
+Shared design tokens in `src/styles/_tokens.scss` control the responsive type
+scale, weights, line heights, heading gaps, and functional icon dimensions.
+Component styles consume these tokens without global heading overrides.
+
+| Category | Shared scale |
+| --- | --- |
+| Hero name | 38–64px; 36–48px on small screens |
+| Services / Projects / Contact headings | 30–48px, weight 700 |
+| Compact About / Tech Stack headings | 24–28px, weight 700 |
+| Card titles | 20–24px, weight 700 |
+| Section descriptions | 15–18px |
+| Body and card descriptions | 14–16px |
+| Eyebrows | 13px; 12px on small screens |
+| Tags and supporting labels | 12px |
+| Buttons and footer text | 14px |
+| Statistics values | 24–30px, weight 700 |
+
+Inline, button, technology, card, statistics, and social icon tokens are 16, 20,
+30, 32, 28, and 24px respectively. Explicit equal width and height retain SVG
+proportions and avoid the shared icon host's em-based sizing changing by context.
+Decorative SVG illustrations retain their existing dimensions and styles.
+The existing font families, colors, gradients, alignments, backgrounds, grids,
+animations, navigation, and functionality remain in place. Cards retain natural
+content height so larger readable text can wrap without clipping.
+No builds or tests were run for the typography standardization.
+
+No build commands or tests were run for this redesign.

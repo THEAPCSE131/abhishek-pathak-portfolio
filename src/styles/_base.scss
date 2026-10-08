@@ -49,14 +49,15 @@ html { scrollbar-color: var(--border-strong) var(--background); scrollbar-width:
   border-radius: var(--radius-sm);
   background: var(--surface);
   color: var(--text);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: var(--type-button);
+  font-weight: var(--weight-label);
   line-height: 1.4;
   white-space: nowrap;
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 .button:not(:disabled):hover { transform: translateY(-2px); border-color: var(--blue); box-shadow: var(--shadow); }
 .button-primary { background: var(--button-gradient); border-color: transparent; color: var(--button-text); }
+.button app-icon { width: var(--icon-button); height: var(--icon-button); }
 .icon-button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--text-muted); transition: background var(--transition), color var(--transition); }
 .icon-button:not(:disabled):hover { background: var(--accent-soft); color: var(--blue); }
 .skip-link { position: fixed; top: 10px; left: 20px; z-index: 100; padding: 10px 16px; border-radius: var(--radius-sm); background: var(--surface); color: var(--text); transform: translateY(-150%); }

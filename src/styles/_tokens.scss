@@ -56,6 +56,49 @@ $transition: 180ms ease;
   --transition: #{$transition};
   --font-sans: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  // Shared responsive type hierarchy; compact subsection headings remain distinct.
+  --type-hero: clamp(38px, 4.4vw, 64px);
+  --type-section: clamp(30px, 3.4vw, 48px);
+  --type-subsection: clamp(24px, 2vw, 28px);
+  --type-card: clamp(20px, 1.8vw, 24px);
+  --type-section-description: clamp(15px, 1.3vw, 18px);
+  --type-body: clamp(14px, 1.15vw, 16px);
+  --type-eyebrow: 13px;
+  --type-tag: 12px;
+  --type-small: 12px;
+  --type-button: 14px;
+  --type-stat: clamp(24px, 2.2vw, 30px);
+  --type-footer-heading: clamp(20px, 1.8vw, 24px);
+  --type-footer: 14px;
+  --weight-heading: 700;
+  --weight-label: 600;
+  --weight-tag: 500;
+  --leading-heading: 1.2;
+  --leading-card: 1.3;
+  --leading-body: 1.6;
+  --tracking-heading: -.8px;
+  --tracking-eyebrow: 2.5px;
+  --heading-description-gap: 14px;
+  --eyebrow-heading-gap: 16px;
+  --section-header-gap: 30px;
+  --card-title-gap: 8px;
+  --icon-inline: 16px;
+  --icon-button: 20px;
+  --icon-technology: 30px;
+  --icon-card: 32px;
+  --icon-stat: 28px;
+  --icon-social: 24px;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --type-hero: clamp(36px, 8vw, 48px);
+    --type-eyebrow: 12px;
+    --type-stat: 24px;
+    --type-section-description: 15px;
+    --type-body: 14px;
+    --section-header-gap: 24px;
+  }
 }
 
 :root[data-theme='light'] {

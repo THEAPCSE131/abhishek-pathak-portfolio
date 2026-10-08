@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, HostListener, inject, signal } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, signal } from '@angular/core';
 import { navigation, portfolioConfig } from '../../../models/portfolio.config';
 import { IconComponent } from '../../../shared/icon.component';
 
@@ -12,6 +12,7 @@ import { IconComponent } from '../../../shared/icon.component';
 })
 export class HeaderComponent {
   private readonly document = inject(DOCUMENT);
+  private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
   readonly navigation = navigation.filter(item => item.enabled);
   readonly resumeUrl = portfolioConfig.resumeUrl;
   readonly menuOpen = signal(false);
@@ -70,6 +71,21 @@ export class HeaderComponent {
     if (this.menuOpen()) {
       this.menuOpen.set(false);
       this.document.getElementById('menu-toggle')?.focus();
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  @HostListener('document:focusin', ['$event'])
+  dismissMenuOutsideHeader(event: Event): void {
+    if (this.menuOpen() && !this.element.nativeElement.contains(event.target as Node | null)) {
+      this.menuOpen.set(false);
+    }
+  }
+
+  @HostListener('window:resize')
+  closeMenuOnDesktop(): void {
+    if (this.document.defaultView?.matchMedia('(min-width: 901px)').matches) {
+      this.menuOpen.set(false);
     }
   }
 

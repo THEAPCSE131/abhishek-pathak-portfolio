@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">AP — Abhishek Pathak</title>
+  <defs>
+    <linearGradient id="ap-gradient" x1="8" y1="15" x2="57" y2="49" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6b9cff"/>
+      <stop offset="1" stop-color="#a18aff"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#17213b"/>
+  <!-- Bold vector initials stay consistent without relying on installed fonts. -->
+  <path fill="url(#ap-gradient)" fill-rule="evenodd" transform="translate(-2)" d="M7 49 18 15h8l11 34h-9l-2-8h-8l-2 8H7Zm13-15h4l-2-10-2 10Zm19-19h9c9 0 13 4 13 11s-4 11-13 11h-1v12h-8V15Zm8 7v8h2c3 0 4-1 4-4s-1-4-4-4h-2Z"/>
+</svg>

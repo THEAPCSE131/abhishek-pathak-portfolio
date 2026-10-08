@@ -7,6 +7,7 @@ export interface PortfolioProject {
   id: string;
   title: string;
   description: string;
+  features: string[];
   icon: string;
   image: string | null;
   imageAlt: string;
@@ -22,6 +23,12 @@ export const projects: PortfolioProject[] = [
     id: 'resume-analyzer',
     title: 'Resume Analyzer',
     description: 'Full-stack AI-powered resume analyzer providing ATS scores, missing skills, and AI-driven improvement suggestions.',
+    features: [
+      'Get ATS score and detailed analysis',
+      'Identify missing skills and keywords',
+      'AI-powered improvement suggestions',
+      'Clean and easy-to-use interface',
+    ],
     icon: 'document-search',
     image: 'assets/projects/resume-iq-preview.png',
     imageAlt: 'ResumeIQ - AI Resume Analyzer Preview',

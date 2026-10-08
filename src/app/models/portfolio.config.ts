@@ -24,8 +24,8 @@ export const portfolioConfig = {
 export const navigation = [
   { label: 'Home', id: 'home', enabled: true },
   { label: 'About', id: 'about', enabled: true },
+  { label: 'Services', id: 'services', enabled: true },
   { label: 'Projects', id: 'projects', enabled: true },
   { label: 'Experience', id: 'experience', enabled: false },
-  { label: 'Skills', id: 'tech-stack', enabled: true },
-  { label: 'Contact', id: 'contact', enabled: false },
+  { label: 'Contact', id: 'contact', enabled: true },
 ];

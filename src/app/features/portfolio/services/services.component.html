@@ -1,0 +1,87 @@
+<section id="services" class="services" aria-labelledby="services-heading">
+  <div class="container">
+    <header class="section-header">
+      <p class="eyebrow">WHAT I CAN BUILD</p>
+      <h2 id="services-heading">Turning Ideas into <span>Real Solutions</span></h2>
+      <p class="section-description">I build modern, scalable and user-friendly web solutions to help individuals, startups and businesses bring their ideas to life.</p>
+    </header>
+    <div class="services-grid">
+      @for (service of services; track service.id) {
+        <article class="service-card" [class]="'service-card accent-' + service.accent" [attr.aria-labelledby]="'service-title-' + service.id">
+          <div class="card-visuals">
+            <span class="service-icon"><app-icon [name]="service.icon" /></span>
+            <svg class="service-illustration" viewBox="0 0 210 160" fill="none" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient [attr.id]="'service-surface-' + service.id" x1="30" y1="30" x2="170" y2="150" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" /><stop offset="1" stop-color="#e4e3ff" /></linearGradient>
+                <linearGradient [attr.id]="'service-accent-' + service.id" x1="60" y1="20" x2="170" y2="140" gradientUnits="userSpaceOnUse"><stop stop-color="#c7baff" /><stop offset="1" stop-color="#7856e8" /></linearGradient>
+                <linearGradient [attr.id]="'service-blue-' + service.id" x1="70" y1="20" x2="175" y2="150" gradientUnits="userSpaceOnUse"><stop stop-color="#b8ccff" /><stop offset="1" stop-color="#5274ed" /></linearGradient>
+                <linearGradient [attr.id]="'service-bag-' + service.id" x1="90" y1="60" x2="150" y2="145" gradientUnits="userSpaceOnUse"><stop stop-color="#ffc794" /><stop offset="1" stop-color="#dc7bc9" /></linearGradient>
+              </defs>
+              <circle cx="70" cy="65" r="45" fill="#ebe7ff" fill-opacity=".6" />
+              <circle cx="149" cy="97" r="57" fill="#edf0ff" fill-opacity=".6" />
+              @if (service.id === 'ai') {
+                <path d="M91 44c-3-25 48-38 62-6" stroke="#c6c1fc" stroke-width="5" stroke-linecap="round" />
+                <circle cx="130" cy="16" r="4" fill="#9c8bf1" />
+                <g transform="rotate(10 118 81)">
+                  <ellipse cx="119" cy="137" rx="38" ry="9" fill="#ded9ff" fill-opacity=".7" />
+                  <path d="M94 113c-5 4-11 13-9 24h61c2-11-5-20-10-24" [attr.fill]="'url(#service-surface-' + service.id + ')'" />
+                  <rect x="81" y="43" width="79" height="73" rx="27" [attr.fill]="'url(#service-surface-' + service.id + ')'" stroke="#d1cafb" stroke-width="2" />
+                  <rect x="86" y="56" width="68" height="43" rx="17" fill="#383388" />
+                  <ellipse cx="105" cy="76" rx="5" ry="8" fill="#8ed9ff" /><ellipse cx="136" cy="76" rx="5" ry="8" fill="#8ed9ff" />
+                  <rect x="71" y="63" width="13" height="31" rx="6" [attr.fill]="'url(#service-accent-' + service.id + ')'" /><rect x="157" y="63" width="13" height="31" rx="6" [attr.fill]="'url(#service-blue-' + service.id + ')'" />
+                </g>
+                <path d="m47 69 4 10 10 4-10 4-4 10-4-10-10-4 10-4 4-10Zm15 40 3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6Z" fill="#a88af2" />
+              } @else {
+                <g transform="rotate(-7 120 80)">
+                  <rect x="66" y="23" width="119" height="112" rx="8" fill="#d0ccff" />
+                  <rect x="62" y="20" width="119" height="112" rx="8" [attr.fill]="'url(#service-surface-' + service.id + ')'" stroke="#dedaff" stroke-width="2" />
+                  <path d="M70 20h103a8 8 0 0 1 8 8v12H62V28a8 8 0 0 1 8-8Z" [attr.fill]="'url(#service-' + (service.accent === 'blue' ? 'blue-' : 'accent-') + service.id + ')'" />
+                  <circle cx="72" cy="30" r="2.3" fill="#fff" fill-opacity=".85" /><circle cx="79" cy="30" r="2.3" fill="#fff" fill-opacity=".65" /><circle cx="86" cy="30" r="2.3" fill="#fff" fill-opacity=".45" />
+                  @switch (service.id) {
+                    @case ('portfolio') {
+                      <rect x="51" y="44" width="119" height="91" rx="7" [attr.fill]="'url(#service-surface-' + service.id + ')'" />
+                      <rect x="63" y="58" width="60" height="7" rx="3" fill="#aaa1fc" /><rect x="129" y="58" width="28" height="7" rx="3" fill="#e2dcfc" />
+                      <rect x="63" y="73" width="45" height="7" rx="3" fill="#aaa1fc" /><rect x="114" y="73" width="43" height="7" rx="3" fill="#e2dcfc" />
+                      <rect x="63" y="88" width="32" height="7" rx="3" fill="#d2c8fa" />
+                      <path d="m128 96 24 12-12 4 6 13-8 4-6-14-8 9 4-28Z" [attr.fill]="'url(#service-accent-' + service.id + ')'" stroke="#a58cf5" stroke-width="1.5" />
+                    }
+                    @case ('business') {
+                      <path d="M73 59h34M73 74h34M73 89h24" stroke="#dbdfff" stroke-width="7" stroke-linecap="round" />
+                      <rect x="120" y="55" width="47" height="44" rx="5" [attr.fill]="'url(#service-blue-' + service.id + ')'" />
+                      <circle cx="143" cy="66" r="3" fill="#c1d9ff" /><path d="m122 93 15-19 10 12 8-9 11 16" fill="#8aaafa" />
+                    }
+                    @case ('applications') {
+                      <path d="M74 55h27M74 67h22" stroke="#ddd5fc" stroke-width="5" stroke-linecap="round" />
+                      <rect x="75" y="97" width="7" height="17" rx="2" fill="#9c91ef" /><rect x="86" y="88" width="7" height="26" rx="2" fill="#aa9ef8" /><rect x="97" y="79" width="7" height="35" rx="2" fill="#8d7ce9" /><rect x="108" y="95" width="7" height="19" rx="2" fill="#9e96f3" />
+                      <circle cx="145" cy="72" r="17" fill="#b6a6fa" /><path d="M145 55a17 17 0 0 1 17 17h-17V55Z" fill="#8c96f2" /><path d="m145 72 12 12a17 17 0 0 0 5-12h-17Z" fill="#6e77de" />
+                      <path d="M134 103h26M134 113h19" stroke="#d5cef8" stroke-width="5" stroke-linecap="round" />
+                    }
+                    @case ('commerce') {
+                      <rect x="74" y="57" width="42" height="40" rx="5" fill="#d7b4f1" /><path d="m75 94 14-22 11 10 12-5 4 17" fill="#b592e0" />
+                      <path d="m145 66 25 3 6 69-41-3 10-69Z" fill="#9575dc" />
+                      <path d="m114 62 35 2 5 71-51-3 11-70Z" [attr.fill]="'url(#service-bag-' + service.id + ')'" />
+                      <path d="M122 66V54c0-21 22-20 22 0v14M151 70V59c0-15 14-15 14 0v12" stroke="#cf926d" stroke-width="2.5" stroke-linecap="round" />
+                    }
+                    @case ('improvements') {
+                      <path d="m92 65-13 14 13 14m28-28 13 14-13 14m-10-34-9 40" stroke="#8f9cfc" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M158 100v-9m0 42v-9m-17-12h-9m43 0h9m-14-12 6-6m-30 30-6 6m30-6 6 6m-30-30-6-6" stroke="#a196fc" stroke-width="10" stroke-linecap="round" />
+                      <circle cx="158" cy="112" r="18" fill="#aa9cfa" /><circle cx="158" cy="112" r="9" fill="#e6dfff" />
+                    }
+                  }
+                </g>
+              }
+            </svg>
+          </div>
+          <h3 [id]="'service-title-' + service.id">{{ service.title }}</h3>
+          <p class="service-description">{{ service.description }}</p>
+          <div class="card-bottom">
+            <ul class="tags" [attr.aria-label]="service.title + ' features'">
+              @for (tag of service.tags; track tag) { <li>{{ tag }}</li> }
+            </ul>
+            <a class="service-action" href="#contact" (click)="contact($event)" [attr.aria-label]="'Discuss ' + service.title + ' — go to Contact'"><app-icon name="arrow" /></a>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
