@@ -16,7 +16,7 @@ const socialLinks: SocialLink[] = [
 export const portfolioConfig = {
   photoUrl: 'assets/images/profile-image.jpg',
   photoAlt: 'Abhishek Pathak - Software Engineer',
-  resumeUrl: 'assets/resume/Abhishek-Pathak-Resume.pdf',
+  resumeUrl: 'assets/resume/Abhishek Pathak - (Software Engineer).pdf',
   contactUrl,
   socialLinks,
 };

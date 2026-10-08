@@ -101,3 +101,50 @@ content height so larger readable text can wrap without clipping.
 No builds or tests were run for the typography standardization.
 
 No build commands or tests were run for this redesign.
+
+## SEO and indexing
+
+Production canonical URL: https://abhishek-pathak-portfolio-o3po.vercel.app/
+
+- Static metadata and Person / WebSite / ProfilePage JSON-LD live in src/index.html,
+  so crawlers and social preview clients can read them without executing Angular.
+- Social previews reuse the existing ResumeIQ screenshot; its absolute production
+  URL and intrinsic dimensions are declared. The hero portrait is preloaded and
+  remains eager/high priority; project previews remain lazy-loaded with dimensions.
+- public/robots.txt allows crawlers and advertises public/sitemap.xml. The sitemap
+  contains only the canonical homepage: section fragments are not separate pages.
+  No fabricated last-modified dates or unimplemented routes are included.
+- public/site.webmanifest reuses the AP SVG icon. No fonts, packages, or generated
+  imagery were added. Existing system font fallbacks do not require network fonts.
+- The latest resume remains assets/resume/Abhishek Pathak - (Software Engineer).pdf.
+- There is one H1, section H2 headings, and card H3 headings. Existing alt text,
+  semantic landmarks, section links, accessible labels, and external-link safety
+  attributes are retained without adding hidden keywords or changing visible copy.
+
+Rendering limitation: this application currently uses client-side rendering.
+The initial HTML contains metadata and structured data, but portfolio body content
+requires JavaScript. SSR/prerendering is not configured; enabling it would require
+Angular server-rendering dependencies and deployment/build verification. Metadata
+alone does not remove this limitation or guarantee ranking or indexing.
+No repository Vercel configuration is present; deployment settings remain managed
+by the existing Vercel project. Confirm the deployed assets are served as files,
+not rewritten to the Angular HTML shell, and that deployment protection does not
+block anonymous crawlers. Update canonical, social and schema URLs and sitemap
+if the production domain changes.
+
+After deploying:
+1. Verify a URL-prefix property for https://abhishek-pathak-portfolio-o3po.vercel.app/ in Google Search Console.
+   Add its exact verification tag to src/index.html if using the HTML-tag method.
+2. Open /robots.txt, /sitemap.xml, the social image, favicon, manifest, and latest
+   resume on the production domain; confirm successful responses and MIME types.
+3. Submit sitemap.xml through Search Console's Sitemaps report.
+4. Use URL Inspection's live inspection to review the rendered page and request
+   indexing for the canonical homepage. Check structured data with Google's Rich
+   Results Test (these schemas do not promise a special rich result).
+5. Review social previews, mobile rendering, accessibility, and measured Core Web
+   Vitals after deployment. External profile/project destinations also need live
+   verification; source inspection cannot confirm their availability.
+
+Reference: https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap
+Rendering: https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics
+No builds, tests, Lighthouse runs, deployment or indexing verification were performed.

@@ -1,5 +1,6 @@
 import { Component, computed, signal } from '@angular/core';
 import { allProjectsUrl, projects } from '../../../models/projects.config';
+import type { PortfolioProject } from '../../../models/projects.config';
 import { IconComponent } from '../../../shared/icon.component';
 
 @Component({
@@ -13,7 +14,7 @@ export class FeaturedProjectsComponent {
   readonly projects = projects;
   readonly allProjectsUrl = allProjectsUrl;
   readonly activeIndex = signal(0);
-  readonly activeProject = computed(() => this.projects[this.activeIndex()] ?? null);
+  readonly activeProject = computed<PortfolioProject | null>(() => this.projects[this.activeIndex()] ?? null);
 
   selectProject(index: number): void {
     if (!this.projects.length) return;

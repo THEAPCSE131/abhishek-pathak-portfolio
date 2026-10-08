@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, ElementRef, HostListener, inject, signal } from '@angular/core';
+import { Component, DestroyRef, ElementRef, HostListener, afterNextRender, inject, signal } from '@angular/core';
 import { navigation, portfolioConfig } from '../../../models/portfolio.config';
 import { IconComponent } from '../../../shared/icon.component';
 
@@ -13,6 +13,10 @@ import { IconComponent } from '../../../shared/icon.component';
 export class HeaderComponent {
   private readonly document = inject(DOCUMENT);
   private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly destroyRef = inject(DestroyRef);
+  private scrollFrame: number | null = null;
+  private scrollIdleTimer: number | undefined;
+  private pendingSection: string | null = null;
   readonly navigation = navigation.filter(item => item.enabled);
   readonly resumeUrl = portfolioConfig.resumeUrl;
   readonly menuOpen = signal(false);
@@ -27,6 +31,12 @@ export class HeaderComponent {
     this.lightTheme.set(savedTheme === 'light' || (savedTheme !== 'dark' &&
       (this.document.defaultView?.matchMedia('(prefers-color-scheme: light)').matches ?? false)));
     this.applyTheme();
+    afterNextRender(() => this.scheduleSectionUpdate());
+    this.destroyRef.onDestroy(() => {
+      const browserWindow = this.document.defaultView;
+      if (this.scrollFrame !== null) browserWindow?.cancelAnimationFrame(this.scrollFrame);
+      browserWindow?.clearTimeout(this.scrollIdleTimer);
+    });
   }
 
   toggleTheme(): void {
@@ -54,9 +64,13 @@ export class HeaderComponent {
     if (!section) return;
     event.preventDefault();
     this.menuOpen.set(false);
+    this.pendingSection = sectionId;
     this.currentSection.set(sectionId);
+    this.keepActiveLinkVisible();
     const reducedMotion = this.document.defaultView?.matchMedia('(prefers-reduced-motion: reduce)').matches;
     section.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'start' });
+    this.scheduleSectionUpdate();
+    this.scheduleScrollIdle();
     const browserWindow = this.document.defaultView;
     browserWindow?.history.replaceState(browserWindow.history.state, '', '#' + sectionId);
     const heading = section.querySelector<HTMLElement>('h1, h2');
@@ -87,6 +101,59 @@ export class HeaderComponent {
     if (this.document.defaultView?.matchMedia('(min-width: 901px)').matches) {
       this.menuOpen.set(false);
     }
+    this.scheduleSectionUpdate();
+  }
+
+  @HostListener('window:scroll')
+  onScroll(): void {
+    this.scheduleSectionUpdate();
+    this.scheduleScrollIdle();
+  }
+
+  private scheduleScrollIdle(): void {
+    const browserWindow = this.document.defaultView;
+    if (!browserWindow) return;
+    browserWindow.clearTimeout(this.scrollIdleTimer);
+    this.scrollIdleTimer = browserWindow.setTimeout(() => {
+      this.pendingSection = null;
+      this.scheduleSectionUpdate();
+    }, 180);
+  }
+
+  private scheduleSectionUpdate(): void {
+    const browserWindow = this.document.defaultView;
+    if (!browserWindow || this.scrollFrame !== null) return;
+    this.scrollFrame = browserWindow.requestAnimationFrame(() => {
+      this.scrollFrame = null;
+      const headerBottom = this.element.nativeElement.getBoundingClientRect().bottom;
+      const activationLine = headerBottom + Math.min(120, browserWindow.innerHeight * .2);
+      let activeId = this.navigation[0]?.id;
+      for (const item of this.navigation) {
+        const section = this.document.getElementById(item.id);
+        if (section && section.getBoundingClientRect().top <= activationLine) activeId = item.id;
+      }
+      // Retain the selected link while smooth scrolling past intermediate sections.
+      if (this.pendingSection && activeId !== this.pendingSection) return;
+      this.pendingSection = null;
+      if (activeId && activeId !== this.currentSection()) {
+        this.currentSection.set(activeId);
+        this.keepActiveLinkVisible();
+      }
+    });
+  }
+
+  private keepActiveLinkVisible(): void {
+    const browserWindow = this.document.defaultView;
+    const menu = this.element.nativeElement.querySelector<HTMLElement>('#primary-navigation');
+    const link = menu?.querySelector<HTMLElement>(`a[href="#${this.currentSection()}"]`);
+    if (!browserWindow || !menu || !link || menu.scrollWidth <= menu.clientWidth) return;
+    const style = browserWindow.getComputedStyle(menu);
+    if (style.visibility === 'hidden' || !['auto', 'scroll'].includes(style.overflowX)) return;
+    const menuBounds = menu.getBoundingClientRect();
+    const linkBounds = link.getBoundingClientRect();
+    const offset = linkBounds.left < menuBounds.left ? linkBounds.left - menuBounds.left - 8
+      : linkBounds.right > menuBounds.right ? linkBounds.right - menuBounds.right + 8 : 0;
+    if (offset) menu.scrollBy({ left: offset, behavior: 'instant' });
   }
 
   private applyTheme(): void {

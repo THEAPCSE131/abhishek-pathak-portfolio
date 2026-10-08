@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abhishek-pathak-portfolio-o3po.vercel.app/sitemap.xml

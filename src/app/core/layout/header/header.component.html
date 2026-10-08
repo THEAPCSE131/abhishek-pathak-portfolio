@@ -8,14 +8,14 @@
       @for (item of navigation; track item.id) {
         <a [href]="'#' + item.id" [class.active]="item.id === currentSection()" [attr.aria-current]="item.id === currentSection() ? 'location' : null" (click)="navigateToSection($event, item.id)">{{ item.label }}</a>
       }
-      <a class="button button-primary resume-button menu-resume" [href]="resumeUrl" download="Abhishek-Pathak-Resume.pdf" aria-label="Download Resume" (click)="closeMenu()"><app-icon name="download" /><span>Download Resume</span></a>
+      <a class="button button-primary resume-button menu-resume" [href]="resumeUrl" download="Abhishek Pathak - (Software Engineer).pdf" aria-label="Download Resume" (click)="closeMenu()"><app-icon name="download" /><span>Download Resume</span></a>
     </nav>
     <div class="header-actions">
       <button class="theme-control" type="button" role="switch" [attr.aria-checked]="!lightTheme()" aria-label="Dark theme" (click)="toggleTheme()">
         <app-icon name="sun" />
         <span class="theme-track" [class.is-dark]="!lightTheme()" aria-hidden="true"><span class="theme-thumb"><app-icon [name]="lightTheme() ? 'sun' : 'moon'" /></span></span>
       </button>
-      <a class="button button-primary resume-button desktop-resume" [href]="resumeUrl" download="Abhishek-Pathak-Resume.pdf" aria-label="Download Resume"><app-icon name="download" /><span>Download Resume</span></a>
+      <a class="button button-primary resume-button desktop-resume" [href]="resumeUrl" download="Abhishek Pathak - (Software Engineer).pdf" aria-label="Download Resume"><app-icon name="download" /><span>Download Resume</span></a>
       <button id="menu-toggle" class="icon-button menu-toggle" type="button" aria-controls="primary-navigation" [attr.aria-expanded]="menuOpen()" [attr.aria-label]="menuOpen() ? 'Close navigation' : 'Open navigation'" (click)="toggleMenu()">
         <app-icon [name]="menuOpen() ? 'close' : 'menu'" />
       </button>
