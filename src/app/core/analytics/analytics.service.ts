@@ -57,6 +57,7 @@ export class AnalyticsService {
     this.enabled = granted;
     if (!granted) {
       browser.gtag?.('consent', 'update', { analytics_storage: 'denied' });
+      this.clearAnalyticsCookies();
       // Reload to unload the tag and stop further automatic collection.
       if (this.configured) browser.location.reload();
       return;
@@ -84,6 +85,7 @@ export class AnalyticsService {
       });
       const script = this.document.createElement('script');
       script.async = true;
+      script.onerror = () => console.warn('Google Analytics tag could not load. Check browser blocking and Content Security Policy.');
       script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
       this.document.head.appendChild(script);
     }
@@ -93,6 +95,16 @@ export class AnalyticsService {
   private pageUrl(): string {
     const browser = this.document.defaultView!;
     return browser.location.origin + browser.location.pathname;
+  }
+
+  private clearAnalyticsCookies(): void {
+    for (const cookie of this.document.cookie.split(';')) {
+      const name = cookie.split('=')[0].trim();
+      if (name !== '_ga' && !name.startsWith('_ga_')) continue;
+      for (const domain of ['', '; domain=abhishekpathak.in', '; domain=.abhishekpathak.in']) {
+        this.document.cookie = `${name}=; max-age=0; path=/${domain}; SameSite=Lax; Secure`;
+      }
+    }
   }
 
   private trackPage(): void {

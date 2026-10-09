@@ -5,27 +5,23 @@ Only the production hostname abhishekpathak.in is tracked. No analytics script,
 cookies, or Google requests are initiated by this integration before explicit
 analytics consent. Advertising consent stays denied.
 
-## Required before collecting visitor analytics
+## Visitor consent
 
-The portfolio currently has no consent interface. Tracking therefore remains off
-for visitors until a consent interface is provided. No existing UI was changed.
-Use a suitable consent interface with clear analytics disclosure, equally available
-accept/reject choices, and a way to withdraw consent. Have the site's privacy notice
-and applicable regional requirements reviewed before enabling collection.
-
-Connect the interface's explicit analytics choice to:
+AnalyticsConsentComponent provides equal accept/decline choices on production and
+a persistent Analytics settings button for changing or withdrawing consent. The
+existing portfolio layout and components are unchanged; only the consent overlay
+is added. No tag is loaded before an explicit opt-in. Withdrawal stores denial,
+clears first-party GA cookies, and reloads to unload the tag. Advertising remains
+disabled. The service also accepts an explicit choice from another consent UI:
 
 ```typescript
 window.dispatchEvent(new CustomEvent('portfolio:analytics-consent', {
-  detail: 'granted', // use 'denied' for rejection or withdrawal
+  detail: 'granted', // 'denied' for rejection or withdrawal
 }));
 ```
 
-Alternatively, inject AnalyticsService and call setConsent with the explicit
-boolean choice. The choice is stored locally; inability to read storage defaults
-to tracking off. Withdrawal reloads the page to unload the Google tag. Previously
-created Google cookies may remain until expiry; the consent interface should clear
-analytics cookies when withdrawing consent if required by its policy.
+The disclosure describes Google Analytics cookies and usage collection. Maintain
+an appropriate full privacy notice for the site's actual data practices.
 
 In GA4 Admin > Data streams > your web stream, disable Enhanced measurement.
 This integration owns page_view events; automatic history page views would cause

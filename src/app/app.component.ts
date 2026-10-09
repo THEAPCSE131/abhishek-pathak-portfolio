@@ -6,11 +6,12 @@ import { FeaturedProjectsComponent } from './features/portfolio/featured-project
 import { ContactComponent } from './features/portfolio/contact/contact.component';
 import { FooterComponent } from './core/layout/footer/footer.component';
 import { ServicesComponent } from './features/portfolio/services/services.component';
+import { AnalyticsConsentComponent } from './core/analytics/analytics-consent.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, HeroComponent, AboutComponent, ServicesComponent, FeaturedProjectsComponent, ContactComponent, FooterComponent],
+  imports: [HeaderComponent, HeroComponent, AboutComponent, ServicesComponent, FeaturedProjectsComponent, ContactComponent, FooterComponent, AnalyticsConsentComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
