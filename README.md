@@ -104,12 +104,18 @@ No build commands or tests were run for this redesign.
 
 ## SEO and indexing
 
-Production canonical URL: https://abhishek-pathak-portfolio-o3po.vercel.app/
+Production canonical URL: https://abhishekpathak.in/
+
+Vercel manages the existing WWW 308 redirect. The existing deployment domain
+https://abhishek-pathak-portfolio-lilac.vercel.app remains available and serves
+metadata pointing to the custom-domain canonical URL; no app redirects were added.
 
 - Static metadata and Person / WebSite / ProfilePage JSON-LD live in src/index.html,
   so crawlers and social preview clients can read them without executing Angular.
-- Social previews reuse the existing ResumeIQ screenshot; its absolute production
-  URL and intrinsic dimensions are declared. The hero portrait is preloaded and
+- Social previews reuse assets/images/portfolio-social-preview.png, the portfolio
+  homepage screenshot proportionally resized and padded to 1200 × 630. Open Graph
+  (including og:image:secure_url) and Twitter summary_large_image use the same
+  absolute HTTPS URL on the custom domain. The hero portrait is preloaded and
   remains eager/high priority; project previews remain lazy-loaded with dimensions.
 - public/robots.txt allows crawlers and advertises public/sitemap.xml. The sitemap
   contains only the canonical homepage: section fragments are not separate pages.
@@ -133,7 +139,7 @@ block anonymous crawlers. Update canonical, social and schema URLs and sitemap
 if the production domain changes.
 
 After deploying:
-1. Verify a URL-prefix property for https://abhishek-pathak-portfolio-o3po.vercel.app/ in Google Search Console.
+1. Verify a URL-prefix property for https://abhishekpathak.in/ in Google Search Console.
    Add its exact verification tag to src/index.html if using the HTML-tag method.
 2. Open /robots.txt, /sitemap.xml, the social image, favicon, manifest, and latest
    resume on the production domain; confirm successful responses and MIME types.
