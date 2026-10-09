@@ -7,8 +7,9 @@ analytics consent. Advertising consent stays denied.
 
 ## Visitor consent
 
-AnalyticsConsentComponent provides equal accept/decline choices on production and
-a persistent Analytics settings button for changing or withdrawing consent. The
+AnalyticsConsentComponent provides a compact consent notice with equal accept/decline
+choices on production. A Cookie Settings button styled as a footer link reopens it;
+there is no persistent floating settings button or large consent panel. The
 existing portfolio layout and components are unchanged; only the consent overlay
 is added. No tag is loaded before an explicit opt-in. Withdrawal stores denial,
 clears first-party GA cookies, and reloads to unload the tag. Advertising remains
@@ -53,3 +54,9 @@ consent interface and must not be dispatched automatically for visitors.
 References:
 https://developers.google.com/tag-platform/security/concepts/consent-mode
 https://developers.google.com/analytics/devguides/collection/ga4/views
+
+Consent remains required by this implementation before loading GA4 for every visitor.
+The minimal notice is retained instead of guessing visitor jurisdiction. It does not
+establish universal legal compliance; keep the full privacy disclosure appropriate
+to Google processing and applicable requirements. No live deployment verification
+was performed for this UI change.

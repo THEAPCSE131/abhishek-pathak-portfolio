@@ -14,6 +14,11 @@ import { IconComponent } from '../../../shared/icon.component';
 export class FooterComponent {
   private readonly document = inject(DOCUMENT);
   readonly year = new Date().getFullYear();
+  readonly analyticsAvailable = this.document.defaultView?.location.hostname === 'abhishekpathak.in';
+
+  openCookieSettings(): void {
+    this.document.defaultView?.dispatchEvent(new CustomEvent('portfolio:cookie-settings'));
+  }
   readonly links = ['home', 'about', 'services', 'projects', 'contact']
     .flatMap(id => navigation.filter(link => link.id === id && link.enabled));
   readonly socialLinks = portfolioConfig.socialLinks.map(link => ({
