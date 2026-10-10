@@ -15,7 +15,6 @@
                 <linearGradient [attr.id]="'service-surface-' + service.id" x1="30" y1="30" x2="170" y2="150" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" /><stop offset="1" stop-color="#e4e3ff" /></linearGradient>
                 <linearGradient [attr.id]="'service-accent-' + service.id" x1="60" y1="20" x2="170" y2="140" gradientUnits="userSpaceOnUse"><stop stop-color="#c7baff" /><stop offset="1" stop-color="#7856e8" /></linearGradient>
                 <linearGradient [attr.id]="'service-blue-' + service.id" x1="70" y1="20" x2="175" y2="150" gradientUnits="userSpaceOnUse"><stop stop-color="#b8ccff" /><stop offset="1" stop-color="#5274ed" /></linearGradient>
-                <linearGradient [attr.id]="'service-bag-' + service.id" x1="90" y1="60" x2="150" y2="145" gradientUnits="userSpaceOnUse"><stop stop-color="#ffc794" /><stop offset="1" stop-color="#dc7bc9" /></linearGradient>
               </defs>
               <circle cx="70" cy="65" r="45" fill="#ebe7ff" fill-opacity=".6" />
               <circle cx="149" cy="97" r="57" fill="#edf0ff" fill-opacity=".6" />
@@ -56,16 +55,17 @@
                       <circle cx="145" cy="72" r="17" fill="#b6a6fa" /><path d="M145 55a17 17 0 0 1 17 17h-17V55Z" fill="#8c96f2" /><path d="m145 72 12 12a17 17 0 0 0 5-12h-17Z" fill="#6e77de" />
                       <path d="M134 103h26M134 113h19" stroke="#d5cef8" stroke-width="5" stroke-linecap="round" />
                     }
-                    @case ('commerce') {
-                      <rect x="74" y="57" width="42" height="40" rx="5" fill="#d7b4f1" /><path d="m75 94 14-22 11 10 12-5 4 17" fill="#b592e0" />
-                      <path d="m145 66 25 3 6 69-41-3 10-69Z" fill="#9575dc" />
-                      <path d="m114 62 35 2 5 71-51-3 11-70Z" [attr.fill]="'url(#service-bag-' + service.id + ')'" />
-                      <path d="M122 66V54c0-21 22-20 22 0v14M151 70V59c0-15 14-15 14 0v12" stroke="#cf926d" stroke-width="2.5" stroke-linecap="round" />
-                    }
                     @case ('improvements') {
                       <path d="m92 65-13 14 13 14m28-28 13 14-13 14m-10-34-9 40" stroke="#8f9cfc" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                       <path d="M158 100v-9m0 42v-9m-17-12h-9m43 0h9m-14-12 6-6m-30 30-6 6m30-6 6 6m-30-30-6-6" stroke="#a196fc" stroke-width="10" stroke-linecap="round" />
                       <circle cx="158" cy="112" r="18" fill="#aa9cfa" /><circle cx="158" cy="112" r="9" fill="#e6dfff" />
+                    }
+                    @case ('api') {
+                      <rect x="75" y="57" width="29" height="29" rx="6" fill="#d2c8fa" />
+                      <rect x="137" y="91" width="29" height="29" rx="6" [attr.fill]="'url(#service-accent-' + service.id + ')'" />
+                      <path d="M104 71h17v34h16" stroke="#9c91ef" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="m84 65-6 6 6 6m11-12 6 6-6 6m51 22-6 6 6 6m11-12 6 6-6 6" stroke="#7856e8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                      <circle cx="121" cy="88" r="5" fill="#b6a6fa" />
                     }
                   }
                 </g>

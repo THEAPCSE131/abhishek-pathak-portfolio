@@ -10,12 +10,11 @@
 h2 { margin: 0 0 var(--heading-description-gap); font-size: var(--type-section); font-weight: var(--weight-heading); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); }
 h2 span { background: var(--button-gradient); background-clip: text; color: transparent; }
 .section-description { max-width: 760px; margin: 0 auto; color: #65738e; font-size: var(--type-section-description); line-height: var(--leading-body); }
-.services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 16px; }
 .service-card { --service-accent: #8054db; --service-soft: #f1edff; display: flex; flex-direction: column; min-width: 0; padding: 20px; border: 1px solid #e5e0fc; border-radius: var(--radius-lg); background: linear-gradient(135deg, #fff, #fbfaff); box-shadow: 0 8px 24px rgba(112, 99, 184, .05); transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition); }
 .accent-blue { --service-accent: #406cd2; --service-soft: #eaf0ff; }
 .accent-violet { --service-accent: #944bcd; --service-soft: #f7edff; }
 .accent-teal { --service-accent: #238f91; --service-soft: #e7f7f7; }
-.accent-orange { --service-accent: #f27b35; --service-soft: #fff0e6; }
 .service-card:hover { transform: translateY(-3px); border-color: #cbbbf7; box-shadow: 0 12px 30px rgba(112, 99, 184, .12); }
 .card-visuals { position: relative; min-height: 90px; margin-bottom: 8px; }
 .service-icon { display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; border-radius: 17px; background: var(--service-soft); color: var(--service-accent); font-size: 32px; }

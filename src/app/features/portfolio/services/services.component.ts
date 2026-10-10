@@ -14,33 +14,33 @@ export class ServicesComponent {
   readonly services = [
     {
       id: 'portfolio', title: 'Portfolio Websites', icon: 'monitor', accent: 'purple',
-      description: 'Modern and responsive personal portfolios, resumes and professional websites.',
+      description: 'Modern, responsive portfolio websites that showcase your skills, experience, and professional identity.',
       tags: ['Personal Portfolio', 'Resume Website', 'Modern UI/UX'],
     },
     {
       id: 'business', title: 'Business Websites', icon: 'globe', accent: 'blue',
-      description: 'Professional websites for businesses, startups and service providers.',
-      tags: ['Corporate Website', 'Landing Page', 'Responsive Design'],
+      description: 'Professional websites for local businesses, clinics, service providers, and startups to build a strong online presence.',
+      tags: ['Business Website', 'Landing Pages', 'Mobile Friendly'],
     },
     {
       id: 'applications', title: 'Web Applications', icon: 'dashboard', accent: 'violet',
-      description: 'Custom web applications, dashboards and admin panels tailored to your needs.',
-      tags: ['Custom Development', 'Admin Dashboard', 'API Integration'],
+      description: 'Custom web applications, dashboards, and management tools designed to simplify business operations.',
+      tags: ['Custom Web Apps', 'Admin Dashboards', 'API Integration'],
     },
     {
       id: 'ai', title: 'AI-Powered Tools', icon: 'brain', accent: 'teal',
-      description: 'Practical AI integrations and automation tools to make workflows smarter and faster.',
-      tags: ['AI Integration', 'Chatbots', 'Automation Tools'],
-    },
-    {
-      id: 'commerce', title: 'E-Commerce Solutions', icon: 'cart', accent: 'orange',
-      description: 'Complete e-commerce solutions with product catalogs, shopping experiences and more.',
-      tags: ['Online Store', 'Product Catalog', 'Secure Payments'],
+      description: 'Smart chatbots and practical AI automation solutions that help businesses manage inquiries and everyday tasks.',
+      tags: ['AI Chatbots', 'Appointment Automation', 'Workflow Automation'],
     },
     {
       id: 'improvements', title: 'Website Improvements', icon: 'wrench', accent: 'blue',
-      description: 'UI enhancements, API integration, bug fixes and performance improvements.',
-      tags: ['UI/UX Enhancements', 'Bug Fixes', 'Performance Optimization'],
+      description: 'Improve your existing website with better design, bug fixes, API integrations, and performance enhancements.',
+      tags: ['UI/UX Improvements', 'Bug Fixes', 'Performance Optimization'],
+    },
+    {
+      id: 'api', title: 'API Integration Services', icon: 'code', accent: 'purple',
+      description: 'Seamlessly connect websites and applications with third-party services to add useful features and improve functionality.',
+      tags: ['REST APIs', 'Third-Party Services', 'Custom Integrations'],
     },
   ];
 
